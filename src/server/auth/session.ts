@@ -48,6 +48,8 @@ export async function upsertProfile(identity: { id: string; email: string; fullN
 }
 
 export const getCurrentUser = cache(async (): Promise<SessionUser | null> => {
+  // Always read the request so pages using auth are never prerendered at build time.
+  const cookieStore = await cookies();
   let email: string | null = null;
 
   if (isSupabaseAuthEnabled) {
@@ -56,7 +58,7 @@ export const getCurrentUser = cache(async (): Promise<SessionUser | null> => {
     email = data.user?.email ?? null;
   }
   if (!email && isDevLoginEnabled) {
-    email = unsign((await cookies()).get(DEV_COOKIE)?.value);
+    email = unsign(cookieStore.get(DEV_COOKIE)?.value);
   }
   if (!email) return null;
 

@@ -11,6 +11,8 @@ import { formatDayMonth } from "@/lib/dates";
 import { listUpcomingRuns } from "@/server/queries/catalog";
 import { getSettings } from "@/server/settings";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: { absolute: "Praxis Center for Advanced Management | Launching November 2026" },
   description:
