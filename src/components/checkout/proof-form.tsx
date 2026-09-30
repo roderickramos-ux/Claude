@@ -1,5 +1,6 @@
 "use client";
 
+import { submitWithoutReset } from "@/lib/form-submit";
 import { useActionState } from "react";
 import { Button } from "@/components/ui/button";
 import { Field, Input, Select } from "@/components/ui/form";
@@ -23,7 +24,7 @@ export function ProofForm({
   const e = state?.errors ?? {};
   if (state?.ok) return <Alert tone="success">{state.message}</Alert>;
   return (
-    <form action={action} className="grid gap-4 sm:grid-cols-2" encType="multipart/form-data">
+    <form onSubmit={submitWithoutReset(action)} className="grid gap-4 sm:grid-cols-2" encType="multipart/form-data">
       <input type="hidden" name="orderNumber" value={orderNumber} />
       <input type="hidden" name="t" value={token} />
       <Field label="Paid via" name="channelCode" error={e.channelCode} required>

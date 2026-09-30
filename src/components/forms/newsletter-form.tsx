@@ -1,5 +1,6 @@
 "use client";
 
+import { submitWithoutReset } from "@/lib/form-submit";
 import Link from "next/link";
 import { useActionState } from "react";
 import { Button } from "@/components/ui/button";
@@ -31,7 +32,7 @@ export function NewsletterForm({
     );
   }
   return (
-    <form action={action} className="space-y-3" noValidate>
+    <form onSubmit={submitWithoutReset(action)} className="space-y-3" noValidate>
       <input type="hidden" name="source" value={source} />
       <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
       <div className={cn("grid gap-2", withName ? "sm:grid-cols-[1fr_1.3fr_auto]" : "sm:grid-cols-[1fr_auto]")}>

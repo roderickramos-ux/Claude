@@ -1,6 +1,6 @@
 # Praxis Center Platform: Phase 1 Proposal
 
-Status: **Draft, awaiting approval.** No application code has been written yet.
+Status: **Approved 30 Sep 2026. Phase 1A built** (see §10 for changes made after the client's answers).
 Source of requirements: [`PROJECT_BRIEF.md`](../PROJECT_BRIEF.md).
 
 ---
@@ -240,3 +240,28 @@ Split into **1A: sellable launch** and **1B: completes Phase 1** so we can open 
 - **Content readiness.** The site depends on real faculty bios and course copy. Placeholders will be clearly marked and blocked from publishing only by the content owner's decision.
 - **BIR compliance.** Official receipts/invoices are out of scope. The system produces acknowledgments only, and numbering stays configurable pending the accountant's advice.
 - **Vendor plan limits.** Vercel Hobby forbids commercial use and limits crons. We plan on Pro.
+
+---
+
+## 10. Client answers and resulting changes (30 Sep 2026)
+
+| Topic | Answer | Change made |
+|---|---|---|
+| Payments | No PayMongo yet; use GCash / QR Ph / BPI QR | Offline-only checkout. Admin-managed **payment channels** (QR image, account details). Buyer uploads proof and reference; staff verify. PayMongo stays a future provider on the same `payments` table. The 15-minute online seat hold was dropped: seats are held when the order is placed. |
+| VAT | Non-VAT (under ₱3M) | No VAT line. Configurable "Non-VAT registered" note on PDFs. |
+| Group rate | 3+ seats per batch | `group_min_seats = 3` per batch. **The percentage was not specified: placeholder 10%**, editable per batch. |
+| Early-bird | 15% | `early_bird_percent = 15` per batch. Deadline is a placeholder (31 Oct 2026, 11:59 PM). |
+| Stacking | Not specified | Default: **no stacking**, best discount wins. Per-batch toggle to stack. |
+| Referral incentives | Requested | New `referral_codes` / `referral_rewards`: ₱-per-seat or % reward for the referrer, an optional buyer discount, self-referral blocked, `?ref=CODE` links, payout tracking. **Reward amounts to be confirmed** (placeholder ₱500 per seat). |
+| Offline hold | 5 days; early-bird honored if the order was placed before the deadline | `paymentHoldDays = 5` (setting). The price is locked at order time. |
+| First run | 4 Saturdays: 14, 21, 28 Nov, 5 Dec 2026. Day 1 and Day 4 in BGC, Days 2–3 on Zoom (hybrid) | Seeded as batch `PPM-2026-11` with per-day mode and location. **Price, capacity, times and venue are placeholders.** |
+| Brand/content | Needs spaces | Logo uploads (light/dark), faculty profiles, course copy, and policy pages are all editable in admin, marked `[PLACEHOLDER]`. |
+| Email | Alerts to the client's Gmail for now | Set via `ADMIN_NOTIFICATION_EMAILS` / Admin → Settings (kept out of the repo). |
+| Coming-soon page | Yes | `SITE_MODE=coming_soon` plus a preview key. The page has notify-me signup with interests. |
+
+### Other technical deviations from §2
+
+- **Markdown** instead of Tiptap for rich text in 1A. It is simpler and safe (no raw HTML), and Tiptap can come later.
+- **Cart in a cookie** (run IDs and seat counts only) instead of `carts` tables. Prices are always recomputed on the server.
+- **Guest order access by secret link** (an HMAC token, not stored). The participant portal with magic-link accounts is in 1B.
+- **RLS**: deny-all for the Supabase Data API. Authorization is enforced in server code for every page and action.

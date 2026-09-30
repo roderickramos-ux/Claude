@@ -1,5 +1,6 @@
 "use client";
 
+import { submitWithoutReset } from "@/lib/form-submit";
 import Link from "next/link";
 import { useActionState } from "react";
 import { Button } from "@/components/ui/button";
@@ -13,7 +14,7 @@ export function InquiryForm({ type }: { type: "contact" | "corporate" }) {
   const e = state?.errors ?? {};
   if (state?.ok) return <Alert tone="success">{state.message}</Alert>;
   return (
-    <form action={action} className="grid gap-5" noValidate>
+    <form onSubmit={submitWithoutReset(action)} className="grid gap-5" noValidate>
       <input type="hidden" name="type" value={type} />
       <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
       <div className="grid gap-5 sm:grid-cols-2">

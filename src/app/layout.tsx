@@ -42,6 +42,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html
       lang="en-PH"
       data-theme={theme}
+      data-scroll-behavior="smooth"
       className={`${cormorant.variable} ${inter.variable} ${fraunces.variable} ${sourceSans.variable}`}
     >
       <body className="min-h-dvh">{children}</body>
