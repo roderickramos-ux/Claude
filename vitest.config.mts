@@ -1,8 +1,11 @@
 import { defineConfig } from "vitest/config";
-import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  plugins: [tsconfigPaths()],
+  resolve: {
+    tsconfigPaths: true,
+    // "server-only" throws outside the React Server bundle; it is a no-op in tests.
+    alias: { "server-only": new URL("./tests/support/empty.ts", import.meta.url).pathname },
+  },
   test: {
     include: ["tests/unit/**/*.test.ts", "tests/integration/**/*.test.ts"],
     environment: "node",

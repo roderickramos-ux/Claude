@@ -176,7 +176,6 @@ CREATE TABLE "order_items" (
 CREATE TABLE "orders" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"order_number" text NOT NULL,
-	"access_token_hash" text NOT NULL,
 	"status" "order_status" DEFAULT 'pending_payment' NOT NULL,
 	"buyer_name" text NOT NULL,
 	"buyer_email" text NOT NULL,

@@ -80,8 +80,6 @@ export const orders = pgTable(
   {
     id: id(),
     orderNumber: text("order_number").notNull().unique(),
-    /** SHA-256 of the secret token that lets a guest view the order without signing in. */
-    accessTokenHash: text("access_token_hash").notNull(),
     status: orderStatus("status").notNull().default("pending_payment"),
     buyerName: text("buyer_name").notNull(),
     buyerEmail: text("buyer_email").notNull(),

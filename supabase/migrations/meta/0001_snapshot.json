@@ -1,6 +1,6 @@
 {
-  "id": "ffa08e44-1bc0-4682-b628-3f1ee8c10d99",
-  "prevId": "0d27c561-238f-4365-8c10-90dc15be955b",
+  "id": "a03c073f-d63b-4e71-8198-19268573aebc",
+  "prevId": "d443c888-1f11-4778-8c37-aa6bd2f183ff",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -1227,12 +1227,6 @@
         },
         "order_number": {
           "name": "order_number",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "access_token_hash": {
-          "name": "access_token_hash",
           "type": "text",
           "primaryKey": false,
           "notNull": true
