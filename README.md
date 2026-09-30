@@ -61,7 +61,7 @@ Policy, admin, and login pages still work.
 
 - **Preview the full site** while in coming-soon mode: visit `/preview?key=<PREVIEW_KEY>`. To exit, use `/preview?exit`.
 - **Go live:** in Vercel, set `SITE_MODE=live` and redeploy. This takes about a minute.
-- **Visual direction:** `NEXT_PUBLIC_THEME=a` (Navy & Gold) or `b` (Forest & Amber). Compare both at `/styleguide`.
+- **Look & feel:** colors and fonts are design tokens in `src/app/globals.css`; `/styleguide` shows them all.
 
 ---
 

@@ -7,7 +7,7 @@ import type { LoadedOrder } from "../orders/load";
 // Built-in PDF fonts have no peso sign, so amounts are printed as "PHP 12,500.00".
 const php = (c: number) => `PHP ${(c / 100).toLocaleString("en-PH", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
-const navy = "#0f2342";
+const navy = "#1b3f7a";
 const s = StyleSheet.create({
   page: { padding: 40, fontSize: 10, fontFamily: "Helvetica", color: "#1f2937", lineHeight: 1.4 },
   header: { flexDirection: "row", justifyContent: "space-between", borderBottomWidth: 2, borderBottomColor: navy, paddingBottom: 12 },

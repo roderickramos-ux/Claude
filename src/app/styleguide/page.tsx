@@ -4,32 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Input, Label } from "@/components/ui/form";
 import { Alert, Badge, Card, Eyebrow } from "@/components/ui/misc";
 
-export const metadata: Metadata = { title: "Style guide: visual directions", robots: { index: false } };
-
-const directions = [
-  {
-    id: "a",
-    name: "A · Scholar",
-    note: "Deep navy + antique gold. Cormorant Garamond headings with Inter body. Classic, institutional, most “academic”.",
-  },
-  {
-    id: "b",
-    name: "B · Practitioner",
-    note: "Forest green + amber. Fraunces headings with Source Sans 3 body. Warmer and more contemporary, slightly less formal.",
-  },
-];
+export const metadata: Metadata = { title: "Style guide", robots: { index: false } };
 
 const swatches = ["primary", "accent", "accent-strong", "ink", "ink-muted", "muted", "bg", "border"];
 
-function Direction({ id, name, note }: (typeof directions)[number]) {
+function Showcase() {
+  const id = "final";
   return (
-    <section data-theme={id} className="min-w-0 bg-bg text-ink" style={{ fontFamily: "var(--font-body)" }}>
-      <div className="border-b border-border bg-surface p-6">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-ink-muted">Direction</p>
-        <h2 className="mt-1 text-3xl">{name}</h2>
-        <p className="mt-2 text-sm text-ink-muted">{note}</p>
-        <p className="mt-2 text-xs text-ink-muted">Activate with <code className="rounded bg-muted px-1">NEXT_PUBLIC_THEME={id}</code></p>
-      </div>
+    <section className="min-w-0 bg-bg text-ink">
 
       {/* Hero */}
       <div className="bg-gradient-to-br from-[var(--hero-from)] to-[var(--hero-to)] p-8 text-white">
@@ -123,15 +105,15 @@ function Direction({ id, name, note }: (typeof directions)[number]) {
 export default function StyleguidePage() {
   return (
     <div className="min-h-dvh bg-muted">
-      <header className="p-6">
-        <h1 className="text-3xl">Praxis Center: two visual directions</h1>
-        <p className="mt-2 max-w-3xl text-ink-muted">
-          Both share the same component library and layout; only the design tokens (colors, typefaces) differ. The live site currently uses
-          direction <strong>{process.env.NEXT_PUBLIC_THEME === "b" ? "B" : "A"}</strong>.
+      <header className="mx-auto max-w-3xl p-6">
+        <h1 className="text-3xl">Praxis Center style guide</h1>
+        <p className="mt-2 text-ink-muted">
+          “Practitioner” direction in blue: deep blue with an amber accent, Fraunces headings and Source Sans 3 body text.
+          Colors and fonts are set once in <code className="rounded bg-surface px-1">src/app/globals.css</code>.
         </p>
       </header>
-      <div className="grid gap-px bg-border lg:grid-cols-2">
-        {directions.map((d) => <Direction key={d.id} {...d} />)}
+      <div className="mx-auto max-w-3xl overflow-hidden rounded-xl border border-border">
+        <Showcase />
       </div>
     </div>
   );

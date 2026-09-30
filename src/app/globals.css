@@ -1,54 +1,28 @@
 @import "tailwindcss";
 
 /*
- * Design tokens. Two visual directions share one component library;
- * switch with <html data-theme="a|b"> (NEXT_PUBLIC_THEME).
- *   A — "Scholar": deep navy + antique gold, Cormorant Garamond / Inter
- *   B — "Practitioner": forest green + amber, Fraunces / Source Sans 3
+ * Design tokens — "Practitioner" direction in blue (chosen 30 Sep 2026):
+ * deep blue + amber accent, Fraunces headings / Source Sans 3 body.
+ * Change the brand palette here; components only reference these variables.
  */
-:root,
-[data-theme="a"] {
-  --bg: #fbfaf7;
+:root {
+  --bg: #f7f8fb;
   --surface: #ffffff;
-  --muted: #f3f1ea;
-  --ink: #14213a;
-  --ink-muted: #4b5567;
-  --primary: #0f2342;
-  --primary-hover: #1a3360;
+  --muted: #eef1f6;
+  --ink: #15213a;
+  --ink-muted: #4b5a70;
+  --primary: #1b3f7a;
+  --primary-hover: #245096;
   --primary-ink: #ffffff;
-  --primary-soft: #e8edf5;
-  --accent: #c29a4b;
-  --accent-strong: #8a6a26;
-  --accent-ink: #0f2342;
-  --accent-soft: #f6efe0;
-  --border: #e3dfd4;
-  --ring: #c29a4b;
-  --hero-from: #0f2342;
-  --hero-to: #1b3a66;
-  --font-heading: var(--font-cormorant), "Iowan Old Style", Georgia, serif;
-  --font-body: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
-  --heading-weight: 600;
-  --heading-tracking: -0.01em;
-}
-
-[data-theme="b"] {
-  --bg: #f8f7f2;
-  --surface: #ffffff;
-  --muted: #eff0e8;
-  --ink: #17231e;
-  --ink-muted: #4d5a53;
-  --primary: #1d3b30;
-  --primary-hover: #28503f;
-  --primary-ink: #ffffff;
-  --primary-soft: #e4eee8;
-  --accent: #d38b2e;
+  --primary-soft: #e6edf8;
+  --accent: #e3a24a;
   --accent-strong: #9a5f17;
-  --accent-ink: #17231e;
+  --accent-ink: #15213a;
   --accent-soft: #fbf0df;
-  --border: #dfe1d6;
-  --ring: #d38b2e;
-  --hero-from: #1d3b30;
-  --hero-to: #2c5646;
+  --border: #dde3ec;
+  --ring: #e3a24a;
+  --hero-from: #16335f;
+  --hero-to: #24508f;
   --font-heading: var(--font-fraunces), Georgia, serif;
   --font-body: var(--font-source-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
   --heading-weight: 600;

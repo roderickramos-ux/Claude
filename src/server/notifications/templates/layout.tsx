@@ -13,7 +13,7 @@ import {
 } from "@react-email/components";
 import type { ReactNode } from "react";
 
-const colors = { navy: "#0f2342", gold: "#b08a3e", ink: "#1f2937", muted: "#6b7280", bg: "#f5f3ee", border: "#e5e1d6" };
+const colors = { navy: "#1b3f7a", gold: "#e3a24a", ink: "#15213a", muted: "#4b5a70", bg: "#f3f5f9", border: "#dde3ec" };
 
 export function EmailLayout({
   preview,

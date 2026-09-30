@@ -1,15 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Fraunces, Inter, Source_Sans_3 } from "next/font/google";
+import { Fraunces, Source_Sans_3 } from "next/font/google";
 import { absoluteUrl } from "@/lib/utils";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-cormorant",
-  display: "swap",
-});
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces", display: "swap" });
 const sourceSans = Source_Sans_3({ subsets: ["latin"], variable: "--font-source-sans", display: "swap" });
 
@@ -31,19 +24,17 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0f2342",
+  themeColor: "#1b3f7a",
   width: "device-width",
   initialScale: 1,
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const theme = process.env.NEXT_PUBLIC_THEME === "b" ? "b" : "a";
   return (
     <html
       lang="en-PH"
-      data-theme={theme}
       data-scroll-behavior="smooth"
-      className={`${cormorant.variable} ${inter.variable} ${fraunces.variable} ${sourceSans.variable}`}
+      className={`${fraunces.variable} ${sourceSans.variable}`}
     >
       <body className="min-h-dvh">{children}</body>
     </html>
