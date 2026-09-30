@@ -24,7 +24,7 @@ export function Header({ settings, cartCount }: { settings: SiteSettings; cartCo
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="rounded-md px-3 py-2 text-[0.92rem] text-ink-muted transition-colors hover:bg-muted hover:text-ink"
+                  className="whitespace-nowrap rounded-md px-2.5 py-2 text-[0.92rem] text-ink-muted transition-colors hover:bg-muted hover:text-ink"
                 >
                   {item.label}
                 </Link>

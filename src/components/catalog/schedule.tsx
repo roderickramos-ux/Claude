@@ -35,3 +35,11 @@ export function scheduleSummary(sessions: RunSession[], startDate: string, endDa
   const range = sessions.length === 1 ? formatDate(sessions[0].date) : `${formatDate(sessions[0].date)} – ${formatDate(sessions.at(-1)!.date)}`;
   return `${range} · ${sessions.length} ${allSat ? "Saturdays" : sessions.length === 1 ? "day" : "sessions"}`;
 }
+
+/** "BGC, Taguig + Zoom" from the session locations, falling back to the venue name. */
+export function locationSummary(run: { sessions: RunSession[]; venueName: string | null; format: string }) {
+  const locs = [...new Set(run.sessions.map((s) => s.location?.trim()).filter(Boolean))];
+  if (locs.length > 0) return locs.join(" + ");
+  if (run.format === "online") return "Live online";
+  return run.venueName ?? "Metro Manila";
+}
